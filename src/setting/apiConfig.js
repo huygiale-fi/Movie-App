@@ -1,0 +1,1 @@
+export const BASE_URL = 'http://movieapi.cyberlearn.vn/api/';
