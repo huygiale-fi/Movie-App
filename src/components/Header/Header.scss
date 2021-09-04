@@ -1,0 +1,56 @@
+.header {
+    position: fixed;
+    z-index: 99;
+    width: 100%;
+    top: 0;
+    left: 0;
+    .navbar-light .navbar-brand:hover {
+        color: brown;
+    }
+    .navbar-light .navbar-nav .nav-link:hover {
+        color: chocolate;
+    }
+    img {
+        width: 45px;
+        height: 45px;
+        margin-right: 3px;
+    }
+    .navbar {
+        background-color: rgba(0, 0, 0, 0.53);
+        a {
+            color: white;
+        }
+        .nav-item a {
+            color: white;
+        }
+    }
+    .btn {
+        width: 100px;
+        border-radius: 2rem;
+        margin-right: 5px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .header { 
+        font-size: 13px;
+        .btn {
+            font-size: 13px;
+            width: 70px;
+            margin-top: 2px;
+        }
+    }
+}
+
+@media screen and (max-width: 575.5px) {
+    .header {
+        font-size: 1rem;
+        .btn {
+            font-size: 1rem;
+            width: 100%;
+            margin-top: 5px;
+        }
+    }
+}
+
