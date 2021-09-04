@@ -1,14 +1,11 @@
-import { createStore, combineReducers, applyMiddleware, compose } from "redux";
-import movieReducer from "containers/client/Home/MovieList/module/reducer";
-import movieDetailReducer from "containers/client/MovieDetail/module/reducer";
-import bannerReducer from "containers/client/Home/Banner/module/reducer";
+import { createStore, combineReducers, applyMiddleware } from "redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import thunk from "redux-thunk";
+import bannerReducer from "./reducer/movieReducer";
+
 
 const rootReducer = combineReducers({
-    movieReducer,
-    movieDetailReducer,
-    bannerReducer,
+    bannerReducer:bannerReducer,
 });
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

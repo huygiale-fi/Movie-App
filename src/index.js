@@ -5,6 +5,10 @@ import 'swiper/swiper.min.css';
 import 'swiper/components/pagination/pagination.min.css';
 import 'swiper/components/navigation/navigation.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'jquery/dist/jquery';
+import 'popper.js/dist/umd/popper'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import 'bootstrap/dist/js/bootstrap'
 import App from './App';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import reportWebVitals from './reportWebVitals';

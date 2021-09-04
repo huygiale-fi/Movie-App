@@ -15,7 +15,7 @@ export default function MovieList() {
 
 
   return (
-    <div style={{ backgroundColor: "#111111ff", height:"100vh" }}>
+    <div style={{ backgroundColor: "#11111ff", height:"100vh" }}>
       
       <div className="container">
       <h3 className="text-white">
@@ -25,12 +25,12 @@ export default function MovieList() {
           slidesPerView={5}
           spaceBetween={10}
           slidesPerGroup={2}
-        // autoplay={{
-        //   delay: 1500,
-        //   disableOnInteraction: false,
-        // }}
-        // loop={true}
-        // loopFillGroupWithBlank={true}
+        autoplay={{
+          delay: 1500,
+          disableOnInteraction: false,
+        }}
+        loop={true}
+        loopFillGroupWithBlank={true}
         >
           <SwiperSlide >
             <Image style={{borderRadius:"5px"}} className="img-movie" src="http://movieapi.cyberlearn.vn/hinhanh/godzilla-vs-kong_gp01.jpg "></Image>

@@ -3,9 +3,9 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import { connect } from "react-redux";
-import { actFetchBannerApi } from "./module/actions";
 import "./Banner.scss";
 import Loader from "react-loader-spinner";
+import { fetchBannerAction } from "../../../../store/action/movieActions";
 
 class Banner extends Component {
     componentDidMount() {
@@ -51,7 +51,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-    fetchBanner: () => dispatch(actFetchBannerApi()),
+    fetchBanner: () => dispatch(fetchBannerAction()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Banner);
