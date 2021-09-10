@@ -1,15 +1,13 @@
 .footer{
-    background-image: url('https://phimhan.co/themes/blockbuster/image/slider-bg.jpg');
-    background-position: 50%;
-    background-size: cover;
-    color: white;
     padding-top: 40px;
+    background-color: #060f19;
 }
 .copyright{
     border-top: 1px solid gray;
     padding: 12px 0px;
     display: flex;
     flex-direction: row;
+    color: #fff;
     justify-content: space-around;
     p{
         margin: 0;
@@ -24,13 +22,14 @@
   font-weight:bold;
   font-size:16px;
   margin-left: 32px;
+  color: #fff;
     }
     ul{
         list-style: none;
         li{
             &:hover{
                 a{
-                    color: white;
+                    color: #ff1744;
                 }
             }
             a{
@@ -49,7 +48,7 @@
         text-decoration:none ;
         &:hover{
             .icc{
-                color: white;
+                color: #ff1744;
             }
         }
         .icc{

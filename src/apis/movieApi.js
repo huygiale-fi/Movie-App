@@ -3,8 +3,8 @@ import callApi from '../utils/callApi';
 
 
 const movieApi = {
-    fetchAllMovieApi() {
-        return callApi(`QuanLyPhim/LayDanhSachPhim?maNhom=${GROUP_ID}`);
+    fetchAllMovieApi(page) {
+        return callApi(`QuanLyPhim/LayDanhSachPhimPhanTrang?maNhom=${GROUP_ID}&soTrang=${page}&soPhanTuTrenTrang=12`);
     },
 
     fetchMovieDetailApi(movieId) {

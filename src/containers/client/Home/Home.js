@@ -1,6 +1,7 @@
 import React from 'react'
-import MovieList from './MovieList/MovieList'
 import Banner from './Banner/Banner'
+import MovieList from './MovieList/MovieList'
+
 export default function Home() {
     return (
         <div>

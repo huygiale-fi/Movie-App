@@ -1,66 +1,88 @@
-import React, { useState } from 'react'
-import SwiperCore, { Autoplay, Pagination, Navigation } from 'swiper/core';
-import './MovieList.scss'
-import { FaInfoCircle, FaWallet,FaRegPlayCircle,FaPlay} from 'react-icons/fa'
-import { Swiper, SwiperSlide } from 'swiper/react'
-
-import { Button, ButtonGroup, Image } from 'react-bootstrap';
+import { FaAngleDoubleLeft, FaAngleDoubleRight, FaRegPlayCircle } from 'react-icons/fa'
+import { ImFire } from 'react-icons/im'
+import moment from 'moment'
+import React, { useEffect, useState } from 'react';
+import { Col, Image, Row, Tab, Tabs, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import './MovieList.scss';
 import ModalVideo from 'react-modal-video'
-SwiperCore.use([Autoplay, Pagination, Navigation]);
+import { useSelector, useDispatch } from 'react-redux'
+import { changePageAction, fetchAllMoviePageAction } from 'store/action/movieActions'
+import Loader from 'react-loader-spinner'
 export default function MovieList() {
-  const [isOpen, setOpen] = useState(false)
-  let getvideoid = (url) => (url.split("embed/")[1].substring(0))
+    const [isOpen, setisOpen] = useState(false)
+    const dispatch = useDispatch();
+    const { movie, page, allpage, isLoading } = useSelector(state => state.movieReducer)
+    useEffect(() => {
+        dispatch(fetchAllMoviePageAction(page))
+    }, [page])
 
+    let renderMoviePage = () => (
+        movie?.map(movie => (
+            <Col lg="3" md="6" sm="12" style={{ height: "400px", marginBottom: '20px' }}>
+                <div className="movie-item-contents gradient1">
+                    <Image src={movie.hinhAnh}></Image>
+                    <div className="movie-item-content">
+                        <div className="movie-item-content-top">
+                            <div className="content-left">
+                                <span className="movie-premiere hover-left">{moment(movie.ngayKhoiChieu).format("MMM Do YY")}</span>
+                            </div>
+                            {movie.hot ? (<div className="content-right">
+                                <span className="movie-hot hover-right"><ImFire className="ic-hot" />HOT</span>
+                            </div>) : ''}
+                        </div>
+                        <div className="movie-item-content-center">
 
+                            <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={movie.trailer?.split("embed/")[1]?.substring(0)} onClose={() => setisOpen(false)} />
 
+                            <a className="hover-play"><FaRegPlayCircle className="ic-play" onClick={() => setisOpen(true)} /></a>
+                        </div>
+                        <div className="movie-item-content-bottom">
+                            <div className="movie-name">
+                                <Link to="#">{movie.tenPhim}</Link>
+                            </div>
+                            <div className="movie-moTa">
+                                <p>Mô Tả: <span>{movie.moTa.length > 80 ? movie.moTa.substring(0, 80) : movie.moTa}</span></p>
+                            </div>
+                            <div className="movie-detail-button">
+                                <div className="movie-detail">
+                                    <Link to={`/movie-detail/${movie.maPhim}`} className="bgbtn btndetail btn-button" >Detail</Link>
+                                </div>
+                                <div className="movie-buy">
+                                    <Link to="#" className="bgbtn btnbuy btn-button" >Mua vé</Link>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </Col>
+        )))
 
-  return (
-    <div style={{ backgroundColor: "#11111ff", height:"100vh" }}>
-      
-      <div className="container">
-      <h3 className="text-white">
-        Phim đang chiếu
-      </h3>
-        <Swiper
-          slidesPerView={5}
-          spaceBetween={10}
-          slidesPerGroup={2}
-        autoplay={{
-          delay: 1500,
-          disableOnInteraction: false,
-        }}
-        loop={true}
-        loopFillGroupWithBlank={true}
-        >
-          <SwiperSlide >
-            <Image style={{borderRadius:"5px"}} className="img-movie" src="http://movieapi.cyberlearn.vn/hinhanh/godzilla-vs-kong_gp01.jpg "></Image>
-            <div className="hover-movie">
-              <ButtonGroup className="btnmovie" >
-                <Button className="btnDetail"> <FaInfoCircle />Chi Tiết</Button> <Button className="btnBuy"><FaWallet />Mua Vé</Button>
-              </ButtonGroup>
-              <div className="trailer">
-                <ModalVideo channel='youtube' autoplay isOpen={isOpen} videoId={getvideoid('https://www.youtube.com/embed/DRCEto_MHSI')} onClose={() => setOpen(false)} />
+    let changepage = (ispage) => {
+        dispatch(changePageAction(ispage))
+    }
 
-                <div className="ic-play" onClick={() => setOpen(true)}><FaPlay/></div>
-              </div>
+    if (isLoading) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+    return (
+        <>
+            <div className="container flex mt-4 mb-4">
+                <Tabs defaultActiveKey="allmovie" id="uncontrolled-tab-example" className="mb-3">
+                    <Tab eventKey="allmovie" className="mb-2" title="All">
+                        <Row>
+                            {renderMoviePage()}
+                            <div className="pagination">
+                                <Button disabled={page === 1 ? true : false} onClick={() => changepage(false)} className="btn-pagination"><FaAngleDoubleLeft /></Button>
+                                <h3><span className="activepage">{page}</span></h3>
+                                <Button disabled={page === allpage ? true : false} onClick={() => changepage(true)} className="btn-pagination"><FaAngleDoubleRight /></Button>
+                            </div>
+                        </Row>
+                    </Tab>
+                    <Tab eventKey="sapchieu" title="Phim Sắp Chiếu">
+                        legiahuy
+                    </Tab>
+
+                </Tabs>
             </div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image className="img-movie" src="http://movieapi.cyberlearn.vn/hinhanh/hon-ma-co-don_gp01.jpg"></Image>
-            <div className="hover-movie"></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image className="img-movie" src="http://movieapi.cyberlearn.vn/hinhanh/hon-ma-co-don_gp01.jpg"></Image>
-            <div className="hover-movie"></div>
-          </SwiperSlide>
-          <SwiperSlide>
-            <Image className="img-movie" src="http://movieapi.cyberlearn.vn/hinhanh/hon-ma-co-don_gp01.jpg"></Image>
-            <div className="hover-movie"></div>
-          </SwiperSlide>
-
-
-        </Swiper>
-      </div>
-    </div>
-  )
+        </>
+    )
 }

@@ -1,16 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import 'swiper/swiper.min.css';
-import 'swiper/components/pagination/pagination.min.css';
-import 'swiper/components/navigation/navigation.min.css';
-import 'bootstrap/dist/css/bootstrap.min.css'
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import App from './App';
 import 'jquery/dist/jquery';
 import 'popper.js/dist/umd/popper'
-import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
 import 'bootstrap/dist/js/bootstrap'
-import App from './App';
+import '@tsamantanis/react-glassmorphism/dist/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux'
