@@ -51,10 +51,16 @@ export default function Header() {
                   Home
                 </Link>
               </li>
-              <li className="nav-item">
-                <Link className="nav-link" to="/contact">
-                  Contact
+              <li className="nav-item dropdownhihi">
+                <Link className="nav-link" aria-disabled to="/">
+                  Phim
                 </Link>
+                <div className="dropdown-menu-content">
+                  <ul>
+                    <li><Link to="/nowshowing">Đang Chiếu</Link></li>
+                    <li><Link to="/comingsoon">Sắp Chiếu</Link></li>
+                  </ul>
+                </div>
               </li>
               <li className="nav-item">
                 <Link className="nav-link" to="/news">

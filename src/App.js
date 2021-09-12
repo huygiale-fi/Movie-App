@@ -8,6 +8,8 @@ import Userinfo from 'containers/client/Auth/Info/Userinfo';
 import History from 'containers/client/Auth/History/History';
 import  createBrowserHistory  from "history/createBrowserHistory"
 import Moviedetail from 'containers/client/Moviedetail/Moviedetail';
+import ComingSoon from 'containers/client/Home/MovieList/Components/ComingSoon';
+import NowShowing from 'containers/client/Home/MovieList/Components/NowShowing';
 export const history = createBrowserHistory()
 const Header = React.lazy(()=>import('./components/Header/Header'))
 const Home = React.lazy(()=>import('./containers/client/Home/Home'))
@@ -26,6 +28,8 @@ function App() {
           <Route exact path="/userinfo" component={Userinfo}></Route>
           <Route exact path="/history" component={History}></Route>
           <Route exact path="/movie-detail/:id" component={Moviedetail}></Route>
+          <Route exact path="/comingsoon" component={ComingSoon}></Route>
+          <Route exact path="/nowshowing" component={NowShowing}></Route>
         </Switch>
         <Footer/>
         </Suspense>

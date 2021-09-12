@@ -82,7 +82,7 @@
 .content-left {
   float: left;
   .hover-left {
-    margin-left: -115px;
+    margin-left: -120px;
     transition: all 0.4s;
   }
 }
@@ -196,7 +196,7 @@
   }
   .movie-buy {
     float: right;
-    margin-right: -99px;
+    margin-right: -130px;
     transition: all 0.4s;
     .btnbuy {
       border-top-right-radius: 0 !important;
@@ -226,3 +226,13 @@
     }
   }
 }
+.ShowCome {
+  .slick-track{
+    display: flex;
+    .slick-slide{
+      height: 400px !important;
+      margin-right: 20px;
+    }
+  }
+}
+

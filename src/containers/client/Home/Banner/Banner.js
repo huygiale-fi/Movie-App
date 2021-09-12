@@ -4,19 +4,19 @@ import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import "./Banner.scss";
 import Loader from "react-loader-spinner";
-
 import { useDispatch, useSelector } from "react-redux";
 import { fetchBannerAction } from "store/action/movieActions";
 
+
 export default function Banner() {
-    const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const { Banner, isLoading } = useSelector(state => state.movieReducer);
   useEffect(() => {
     dispatch(fetchBannerAction());
     console.log('chokia')
   }, []);
 
-  
+
   const settings = {
     dots: true,
     infinite: true,
@@ -24,22 +24,23 @@ export default function Banner() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    marginRight:20,
+    marginRight: 20,
   };
   if (isLoading)
     return <Loader type="Bars" color="#00BFFF" height={80} width={80} />;
-    return (
-        <div>
-            <section className="banner">
-        <Slider {...settings}>{Banner?.map((banner,index)=>{
-      return (
-        <div key={index}>
-          <img src={banner.hinhAnh}></img>
-        </div>
-      )})} </Slider>
+  return (
+    <div>
+      <section className="banner">
+        <Slider {...settings}>{Banner?.map((banner, index) => {
+          return (
+            <div key={index}>
+              <img src={banner.hinhAnh}></img>
+            </div>
+          )
+        })} </Slider>
       </section>
-        </div>
-    )
+    </div>
+  )
 }
 
 

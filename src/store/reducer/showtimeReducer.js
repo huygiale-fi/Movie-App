@@ -16,7 +16,6 @@ const initialState = {
         return { ...state,showtime:payload,isloading:false }
     case showtimeType.FETCH_INFO_SHOWTIMES_FAILED:
         return { ...state,errors:payload,isloading:false }
-
     default:
         return state
     }

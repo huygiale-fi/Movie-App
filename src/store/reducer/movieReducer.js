@@ -2,6 +2,7 @@ import * as movieType from '../constants/movieType'
 
 const initialState = {
     movie:[],
+    movieAll:[],
     page:1,
     allpage:null,
     Banner: [],
@@ -27,6 +28,12 @@ const movieReducer = (state = initialState, { type, payload }) => {
             allpage: payload.totalPages}
     case movieType.FETCH_MOVIEPAGE_FAILED:
         return {...state,isLoading:false,errors:payload}
+    case movieType.FETCH_ALLMOVIE_REQUEST:
+        return {...state}
+    case movieType.FETCH_ALLMOVIE_SUCCESS:
+        return {...state,movieAll:payload}
+    case movieType.FETCH_ALLMOVIE_FAILED:
+        return {...state,errors:payload}
     case movieType.CHANGE_PAGE_NEXT:
         let pagenext = state.page+1
         return{...state,page:pagenext}

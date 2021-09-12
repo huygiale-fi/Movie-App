@@ -9,13 +9,18 @@ import ModalVideo from 'react-modal-video'
 import { useSelector, useDispatch } from 'react-redux'
 import { changePageAction, fetchAllMoviePageAction } from 'store/action/movieActions'
 import Loader from 'react-loader-spinner'
+import NowShowing from './Components/NowShowing';
+import ComingSoon from './Components/ComingSoon';
 export default function MovieList() {
     const [isOpen, setisOpen] = useState(false)
     const dispatch = useDispatch();
     const { movie, page, allpage, isLoading } = useSelector(state => state.movieReducer)
     useEffect(() => {
         dispatch(fetchAllMoviePageAction(page))
+        
     }, [page])
+
+    
 
     let renderMoviePage = () => (
         movie?.map(movie => (
@@ -49,7 +54,7 @@ export default function MovieList() {
                                     <Link to={`/movie-detail/${movie.maPhim}`} className="bgbtn btndetail btn-button" >Detail</Link>
                                 </div>
                                 <div className="movie-buy">
-                                    <Link to="#" className="bgbtn btnbuy btn-button" >Mua vé</Link>
+                                    <Link to={`/movie-detail/${movie.maPhim}`} className="bgbtn btnbuy btn-button" >{movie.dangChieu===true ? 'Mua Vé' : 'Coming Soon'}</Link>
                                 </div>
                             </div>
                         </div>
@@ -61,6 +66,7 @@ export default function MovieList() {
     let changepage = (ispage) => {
         dispatch(changePageAction(ispage))
     }
+ 
 
     if (isLoading) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
     return (
@@ -77,8 +83,11 @@ export default function MovieList() {
                             </div>
                         </Row>
                     </Tab>
+                    <Tab eventKey="dangchieu" title="Phim Đang Chiếu">
+                        <NowShowing/>
+                    </Tab>
                     <Tab eventKey="sapchieu" title="Phim Sắp Chiếu">
-                        legiahuy
+                        <ComingSoon/>
                     </Tab>
 
                 </Tabs>
