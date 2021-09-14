@@ -7,7 +7,7 @@ const initialState = {
     errors:{}
 }
 
- const showtimeReducer = (state = initialState, { type, payload }) => {
+    const showtimeReducer = (state = initialState, { type, payload }) => {
     switch (type) {
 
     case showtimeType.FETCH_INFO_SHOWTIMES_REQUEST:

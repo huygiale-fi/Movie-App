@@ -62,8 +62,8 @@ export default function Header() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/application">
-                  Application
+                <Link className="nav-link" to="/theater">
+                  Theater
                 </Link>
               </li>
             </ul>
@@ -80,7 +80,7 @@ export default function Header() {
                 </Link>):(
                     <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                     {userpost.hoTen?.length > 9 ? userpost.hoTen?.substring(0,9) : userpost.hoTen}
+                      {userpost.hoTen?.length > 9 ? userpost.hoTen?.substring(0,9) : userpost.hoTen}
                     </Dropdown.Toggle>
                   
                     <Dropdown.Menu classname="dropdown-user">

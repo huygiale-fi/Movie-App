@@ -1,0 +1,33 @@
+.theater {
+    margin-top: 90px;
+    button {
+        width: calc(100%/6);
+    }
+    .tab-content {
+        button {
+            text-align: left;
+            width: 100%;
+        }
+        img {
+            margin-right: 10px;
+            display: block;
+        }
+        .time {
+            margin-top: 20px;
+            margin-bottom: 30px;
+            .col-2 {
+                text-align: center;
+            }
+            .col-10 {
+                margin-bottom: 10px;
+            }
+            a {
+                padding-right: 10px;
+            }
+            img {
+                height: 100px;
+                margin: auto;
+            }
+        }
+    }
+}
