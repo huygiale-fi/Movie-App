@@ -1,0 +1,35 @@
+
+  
+  
+  .sidebar {
+    background-color: #001529;
+    .logo{
+      padding: 10px 10px 20px 10px;
+      color: hsla(0,0%,100%,.65);
+      border-bottom: 2px solid #ff1744;
+    }
+  }
+  .listsidebar{
+    list-style: none;
+    padding-left: 0rem !important;
+    margin: none !important;  
+    .sidebar-item{
+      padding: 10px 30px;
+      a{
+        text-decoration: none;
+        color: hsla(0,0%,100%,.65); 
+        font-size: 16px;
+        font-weight: 500;
+      }
+      &.active{
+        background-color: #ff1744;
+        a{color: white;}
+      }
+      &:hover{
+        background-color: #ff1744;
+        a{color: white;}
+      }
+    }
+  }
+  
+  

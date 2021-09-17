@@ -7,7 +7,6 @@ const initialState = {
     islogged:false,
     isloaduser:false,
     userpost:localStorage.getItem('userpost'),
-    isloading:false,
 }
 
 const authReducer = (state = initialState, { type, payload }) => {
@@ -22,7 +21,7 @@ const authReducer = (state = initialState, { type, payload }) => {
         toast.error('Đăng kí thất bại')
         return { ...state }
     case authType.POST_LOGIN_SUCCESS:
-        toast.success('Vui Lòng Đợi')
+        toast.success('Đăng Nhập Thành Công')
         localStorage.setItem('user',JSON.stringify(payload))
         localStorage.setItem('accessToken',payload.accessToken)
         return { ...state,islogged:true,user:payload,token:payload.accessToken }
@@ -30,12 +29,12 @@ const authReducer = (state = initialState, { type, payload }) => {
         toast.error('Đăng nhập thất bại')
         return { ...state }
     case authType.POST_USER_REQUEST:
-        return {...state,isloading:true}
+        return {...state,isloaduser:true}
     case authType.POST_USER_SUCCESS:
         localStorage.setItem('userpost',JSON.stringify(payload))
-        return { ...state,userpost:payload,isloaduser:true,isloading:false}
+        return { ...state,userpost:payload,isloaduser:false}
     case authType.POST_USER_FAILED:
-        return { ...state,isloading:false}
+        return { ...state,isloaduser:false}
     case authType.LOGOUT:
         localStorage.clear();
         return{...state,

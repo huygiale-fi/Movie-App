@@ -8,13 +8,14 @@ import {postLoginAction} from '../../../../store/action/authAction'
 import {useSelector,connect} from 'react-redux'
  function Login(props) {
      const history = useHistory()
-     const {isloading,isloaduser,userpost} = useSelector(state=>state.authReducer)
+     
+     const {islogged,user,isloaduser} = useSelector(state=>state.authReducer)
      useEffect(() => {
-         if(isloaduser){
+         if(islogged){
              history.push('/')
          }
-     }, [history,isloaduser])
-     if(userpost){
+     }, [islogged])
+     if(user){
          return <Redirect to="/"/>
      }
     const {
@@ -39,7 +40,7 @@ import {useSelector,connect} from 'react-redux'
                         {errors.matKhau && (<p className="font-italic text-danger">{errors.matKhau}</p>)}
                     </div>
                     <div className="flexbtn">
-                    {!isloading ? (<button className="btnAuth" type="submit">
+                    {!isloaduser ? (<button className="btnAuth" type="submit">
                         <span></span>
                         <span></span>
                         <span></span>
@@ -58,7 +59,7 @@ import {useSelector,connect} from 'react-redux'
                 </Button>
                     
                 )}
-                <Link to="/register" style={isloading ? {pointerEvents:"none"}: {pointerEvents:'inherit'}}><Button className="btnAuth" disabled={isloading ? true : false}>
+                <Link to="/register" style={isloaduser ? {pointerEvents:"none"}: {pointerEvents:'inherit'}}><Button className="btnAuth" disabled={isloaduser ? true : false}>
                 <span></span>
                     <span></span>
                     <span></span>

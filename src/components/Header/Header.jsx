@@ -7,19 +7,17 @@ import { postUserAction,LogoutAction } from "store/action/authAction";
 export default function Header() {
     const history = useHistory()
     const dispatch = useDispatch()
-    const {user,userpost} = useSelector(state => state.authReducer)
-    console.log(user);
-    const islogged = user ? true : false;
+    const user = JSON.parse(localStorage.getItem('user'))
     const onLogout = (e) => {
         e.preventDefault();
         dispatch(LogoutAction())
         history.push("/")
     }
     useEffect(() => {
-        if(islogged){
+        if(user){
             dispatch(postUserAction())
         }
-    }, [islogged])
+    }, [])
   return (
     <section className="header ">
       <nav className="navbar navbar-expand-sm navbar-light justify-content-between">
@@ -81,16 +79,16 @@ export default function Header() {
             <ul className="navbar-nav">
               <li className="nav-item">
                 <i className="fa fa-user"></i>
-                {!userpost ? (<Link className="nav-link btn btn-primary" to="/login">
+                {!user ? (<Link className="nav-link btn btn-primary" to="/login">
                   LOGIN
                 </Link>):(
                     <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                     {userpost.hoTen?.length > 9 ? userpost.hoTen?.substring(0,9) : userpost.hoTen}
+                     {user.hoTen?.length > 9 ? user.hoTen?.substring(0,9) : user.hoTen}
                     </Dropdown.Toggle>
                   
                     <Dropdown.Menu classname="dropdown-user">
-                    <Dropdown.Item > <Link to="/userinfo" >Your Info</Link></Dropdown.Item>
+                    <Dropdown.Item > <Link to="/user" >Your Info</Link></Dropdown.Item>
                     <Dropdown.Item> <Link to="/history">History Booking Ticket</Link> </Dropdown.Item>
                     <Dropdown.Item onClick={onLogout}><Link  to="/logout"></Link>Logout</Dropdown.Item>
                     </Dropdown.Menu>

@@ -13,7 +13,6 @@ export default function Banner() {
   const { Banner, isLoading } = useSelector(state => state.movieReducer);
   useEffect(() => {
     dispatch(fetchBannerAction());
-    console.log('chokia')
   }, []);
 
 

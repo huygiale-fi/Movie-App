@@ -4,10 +4,11 @@ import moment from 'moment'
 import './History.scss'
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
+import Loader from 'react-loader-spinner'
 export default function History() {
-  const { userpost } = useSelector(state => state.authReducer)
+  const { user,userpost,isloaduser } = useSelector(state => state.authReducer)
   const thongTinDatVe = userpost?.thongTinDatVe;
-  if(!userpost){
+  if(!user){
     return <Redirect to="/login"/>
   }
   let renderHistoryBooking = () => (
@@ -46,7 +47,7 @@ export default function History() {
         </Row>
     })
   )
-  
+  if (isloaduser) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
   return (
     <div>
       {thongTinDatVe?.length === 0 ?

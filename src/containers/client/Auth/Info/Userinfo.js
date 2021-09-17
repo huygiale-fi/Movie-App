@@ -4,14 +4,16 @@ import toast from 'react-hot-toast'
 import './Userinfo.scss'
 import { Redirect } from 'react-router'
 import { Form, Row, Col, Button, Image } from 'react-bootstrap'
+import Loader from 'react-loader-spinner'
 export default function Userinfo() {
-    const { userpost } = useSelector(state => state.authReducer)
+    const { userpost,user,isloaduser } = useSelector(state => state.authReducer)
     const info =()=>{
         toast.success('Vui lòng IB quản trị viên')
     }
-    if (!userpost) {
+    if (!user) {
         return <Redirect to="/login" />
     }
+    if (isloaduser) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
     return (
         <div className="container userinfo-bg" >
             <div className="p-4">
@@ -20,23 +22,23 @@ export default function Userinfo() {
             <Row className="mb-3 px-5">
                 <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Email</Form.Label>
-                    <Form.Control value={userpost.email} />
+                    <Form.Control value={userpost?.email} />
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Phone Number</Form.Label>
-                    <Form.Control value={userpost.soDt} />
+                    <Form.Control value={userpost?.soDt} />
                 </Form.Group>
             </Row>
             <Row className="mb-3 px-5">
                 <Form.Group as={Col} controlId="formGridEmail">
                     <Form.Label>Username</Form.Label>
-                    <Form.Control value={userpost.taiKhoan} />
+                    <Form.Control value={userpost?.taiKhoan} />
                 </Form.Group>
 
                 <Form.Group as={Col} controlId="formGridPassword">
                     <Form.Label>Fullname</Form.Label>
-                    <Form.Control value={userpost.hoTen} />
+                    <Form.Control value={userpost?.hoTen} />
                 </Form.Group>
             </Row>
             <Button className="mx-5 btnchange" variant="primary" onClick={info} type="submit">
