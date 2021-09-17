@@ -1,0 +1,41 @@
+.site-admin-bg{
+    background-color: #fff;
+    padding: 24px;
+    height: 90%;
+}
+.admin-btnAdd{
+    margin-top: 8px;
+    .btnAddMovie{
+        color: #fff;
+        background-color: #ff1744;
+        padding: 5px 84px;
+        border: none;
+        border-radius: 10px;
+        transition: all .4s;
+        &:hover{
+            background-color: #c01b3c;
+        }
+    }
+}
+.admin-movietrailer{
+    color: #1890ff;
+}
+.admin-dsShowtime{
+    overflow-x: scroll;
+}
+.btnDelete{
+    background-color: red;
+    color: #fff;
+    border: none;
+    margin: 5px;
+    padding: 2px 20px;
+    border-radius: 5px;
+}
+.btnUpdate{
+    @extend .btnDelete;
+    background-color: rgb(29, 94, 29);
+}
+.btnShowtime{
+    @extend .btnDelete;
+    background-color:rgb(13, 105, 158) ;
+}

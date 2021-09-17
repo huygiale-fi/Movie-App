@@ -7,6 +7,7 @@ import Home from "containers/client/Home/Home";
 import ComingSoon from "containers/client/Home/MovieList/Components/ComingSoon";
 import NowShowing from "containers/client/Home/MovieList/Components/NowShowing";
 import Moviedetail from "containers/client/Moviedetail/Moviedetail";
+import Theater from "containers/client/Theater/Theater";
 
 export const clientRoutes = [
     {
@@ -42,6 +43,12 @@ export const clientRoutes = [
     {
       path: '/user',
       component: Userinfo,
+      exact: false,
+      isPrivate: false,
+    },
+    {
+      path: '/theater',
+      component: Theater,
       exact: false,
       isPrivate: false,
     },

@@ -9,6 +9,7 @@ import ClientLayout from 'layout/ClientLayout';
 import BookingTicket from 'containers/client/Booking/BookingTicket';
 import Navbar from 'containers/admin/Sidebar';
 import AdminLayout from 'layout/AdminLayout';
+import PageNotFound from 'containers/Shared/PageNotFound';
 export const history = createBrowserHistory()
 const Login = React.lazy(()=>import('containers/client/Auth/Login/Login'))
 function App() {
@@ -35,6 +36,7 @@ function App() {
           <Route exact path="/login" component={Login}></Route>
           <Route exact path="/register" component={Register}></Route>
           <Route exact path="/seat-plan/:id" component={BookingTicket}></Route>
+          <Route  path="*" component={PageNotFound}></Route>
         </Switch>
         </Suspense>
       </Router>
