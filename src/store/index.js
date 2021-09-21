@@ -6,6 +6,7 @@ import bookingReducer from "./reducer/bookingRecuder";
 import movieReducer from "./reducer/movieReducer";
 import showtimeReducer from "./reducer/showtimeReducer";
 import theaterReducer from "./reducer/theaterReducer";
+import { searchReducer, userReducer } from "./reducer/userReducer";
 
 
 const rootReducer = combineReducers({
@@ -14,6 +15,8 @@ const rootReducer = combineReducers({
     showtimeReducer:showtimeReducer,
     bookingReducer:bookingReducer,
     theaterReducer:theaterReducer,
+    userReducer: userReducer,
+    searchReducer: searchReducer,
 });
 
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

@@ -14,8 +14,6 @@ export default function Theater() {
         dispatch(actFetchTheaterAction());
     }, []);
 
-    console.log(theater);
-
     if (loading)
         return <Loader type="Bars" color="#00BFFF" height={80} width={80} />;
 
@@ -137,6 +135,7 @@ export default function Theater() {
                                                                                         return (
                                                                                             <Link
                                                                                                 to={`/seat-plan/${lichChieu.maLichChieu}`}
+                                                                                                className="btn btn-danger mr-3 mb-3"
                                                                                             >
                                                                                                 {new Date(
                                                                                                     lichChieu.ngayChieuGioChieu

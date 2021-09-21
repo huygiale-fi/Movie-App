@@ -3,10 +3,27 @@
     button {
         width: calc(100%/6);
     }
+    .nav-tabs {
+        .nav-link {
+            p {
+                color: black;
+            }
+        }
+        .nav-link.active {
+            background-color: rgb(251, 99, 99);
+            p {
+                color: black;
+            }
+        }
+    }
     .tab-content {
+        .nav-link.active {
+            background-color: rgb(255, 0, 0);
+        }
         button {
             text-align: left;
             width: 100%;
+            color: black;
         }
         img {
             margin-right: 10px;
@@ -22,7 +39,7 @@
                 margin-bottom: 10px;
             }
             a {
-                padding-right: 10px;
+                margin-right: 20px;
             }
             img {
                 height: 100px;
