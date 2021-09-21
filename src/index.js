@@ -8,6 +8,7 @@ import 'popper.js/dist/umd/popper'
 import 'bootstrap/dist/js/bootstrap'
 import '@tsamantanis/react-glassmorphism/dist/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
+import "react-datepicker/dist/react-datepicker.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
 import reportWebVitals from './reportWebVitals';
 import store from './store'

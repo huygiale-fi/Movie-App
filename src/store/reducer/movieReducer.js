@@ -8,6 +8,7 @@ const initialState = {
     Banner: [],
     errors: {},
     isLoading : false,
+    movieInfo:{},
 }
 
 const movieReducer = (state = initialState, { type, payload }) => {
@@ -40,6 +41,27 @@ const movieReducer = (state = initialState, { type, payload }) => {
     case movieType.CHANGE_PAGE_PREV:
         let pageprev = state.page-1
         return{...state,page:pageprev}
+    case movieType.ADD_MOVIEIMG_REQUEST:
+        return{...state}
+    case movieType.ADD_MOVIEIMG_SUCCESS:
+        return{...state}
+    case movieType.ADD_MOVIEIMG_FAILED:
+        console.log(payload)
+        return{...state}
+    case movieType.FETCH_MOVIEINFO_REQUEST:
+        return{...state}
+    case movieType.FETCH_MOVIEINFO_SUCCESS:
+        return{...state,movieInfo:payload}
+    case movieType.FETCH_MOVIEINFO_FAILED:
+        return{...state,errors:payload}
+    case movieType.DELETE_MOVIE_REQUEST:
+        return{...state}
+    case movieType.DELETE_MOVIE_SUCCESS:
+        alert("Xóa Thành Công")
+        return{...state}
+    case movieType.DELETE_MOVIE_FAILED:
+        alert("Xóa Thất Bại")
+        return{...state,errors:payload}
     default:
         return state
     }
