@@ -6,6 +6,9 @@ import { addMovieUpLoadImgAction, fetchAllMoviePageAction } from 'store/action/m
 import { useDispatch, useSelector, connect } from 'react-redux'
 import { useFormik, withFormik } from 'formik'
 import * as Yup from 'yup'
+// Vấn đề của em là chỗ validate hình ảnh, validate switch (sắp chiếu và đang chiếu) và cập nhật ngayKhoiChieu nha a.
+// Đã gán ngayKhoiChieu lấy được từ reducer rồi, nhưng khi cập nhật lại thì bị invalid date
+
 
 export const UpdateFilm = (props) =>{
 
@@ -47,6 +50,7 @@ export const UpdateFilm = (props) =>{
                 .min(1, 'Trong khoảng 1 - 10')
                 .max(10, 'Trong khoảng 1 - 10')
                 .required('Đánh Giá Không Được Trống'),
+            // Anh chỉ giúp e chỗ validate hinhAnh 
         }),
         
         onSubmit: (values,{resetForm}) => {
@@ -126,6 +130,9 @@ export const UpdateFilm = (props) =>{
                             </div>
                         </div>
                     </div>
+
+                    
+                    {/* Ngày khởi chiếu */}
                     <div className="form-row " style={{ display: "flex", justifyContent: "space-between" }}>
                         <div className="form-group col-md-7">
                             <label htmlFor="exampleFormControlFile1">Ngày K/C</label>
