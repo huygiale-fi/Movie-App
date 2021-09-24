@@ -1,5 +1,6 @@
 import DashBoard from "containers/admin/DashBoard/DashBoard";
-import Showtime from "containers/admin/Showtime/Showtime";
+import Showtime from "containers/admin/LichChieu/Showtime";
+import Films from "containers/admin/Showtime/Films";
 import User from "containers/admin/User/User";
 import History from "containers/client/Auth/History/History";
 import Userinfo from "containers/client/Auth/Info/Userinfo";
@@ -68,7 +69,13 @@ export const clientRoutes = [
       isPrivate: true,
     },
     {
-      path: '/admin/showtime',
+      path: '/admin/film',
+      component: Films,
+      exact: true,
+      isPrivate: true,
+    },
+    {
+      path: '/admin/film/showtime/:id',
       component: Showtime,
       exact: true,
       isPrivate: true,

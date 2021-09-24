@@ -2,18 +2,38 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import DatePicker from "react-datepicker";
 import { Button, Modal } from 'react-bootstrap'
-import { addMovieUpLoadImgAction, fetchAllMoviePageAction } from 'store/action/movieActions'
-import { useDispatch, useSelector, connect } from 'react-redux'
-import { useFormik, withFormik } from 'formik'
+import { updateMovieAction } from 'store/action/movieActions'
+import { useDispatch, useSelector } from 'react-redux'
+import { useFormik } from 'formik'
 import * as Yup from 'yup'
-// Vấn đề của em là chỗ validate hình ảnh, validate switch (sắp chiếu và đang chiếu) và cập nhật ngayKhoiChieu nha a.
-// Đã gán ngayKhoiChieu lấy được từ reducer rồi, nhưng khi cập nhật lại thì bị invalid date
 
 
-export const UpdateFilm = (props) =>{
+const validationSchema =Yup.object().shape({
+    maPhim: Yup.number()
+        .required('Mã Phim Không Được Trống'),
+    tenPhim: Yup.string()
+        .required('Tên Phim Không Được Trống'),
+    trailer: Yup.string()
+        .required('Trailer Không Được Trống')
+        .matches(/www.youtube.com\/embed\/[A-z0-9]+/, "URL Không Đúng Định Dạng"),
+    sapChieu: Yup.boolean()
+        .required("Không "),
+    moTa: Yup.string()
+        .required('Mô Tả Không Được Trống'),
+    ngayKhoiChieu: Yup.string()
+        .required('Ngày Khởi Chiếu Không Được Trống'),
+    danhGia: Yup.number()
+        .min(1, 'Trong khoảng 1 - 10')
+        .max(10, 'Trong khoảng 1 - 10')
+        .required('Đánh Giá Không Được Trống'),
+    
+});
 
+
+export const  UpdateFilm = (props) => {
+    const dispatch = useDispatch()
     const { movieInfo } = useSelector(state => state.movieReducer)
-    console.log("movieInfo", movieInfo.maPhim)
+    console.log(movieInfo.hinhAnh);
     const [startDate, setStartDate] = useState();
     const [danhGia, setdanhGia] = useState(1);
     const [imgsrc, setimgsrc] = useState('');
@@ -21,57 +41,39 @@ export const UpdateFilm = (props) =>{
         enableReinitialize:true,
         initialValues: {
             maPhim: movieInfo?.maPhim,
-            tenPhim: movieInfo.tenPhim,
-            trailer: movieInfo.trailer,
+            tenPhim: movieInfo?.tenPhim,
+            trailer: movieInfo?.trailer,
             moTa: movieInfo.moTa,
             maNhom: 'GP01',
-            ngayKhoiChieu: movieInfo.ngayKhoiChieu,
-            sapChieu: movieInfo.sapChieu,
-            dangChieu: movieInfo.dangChieu,
-            hot: movieInfo.hot,
-            danhGia: movieInfo.danhGia,
-            hinhAnh: {},
+            ngayKhoiChieu: movieInfo?.ngayKhoiChieu,
+            sapChieu: movieInfo?.sapChieu,
+            dangChieu: movieInfo?.dangChieu,
+            hot: movieInfo?.hot,
+            danhGia: movieInfo?.danhGia,
+            hinhAnh: null,
         },
-        validationSchema:Yup.object().shape({
-            maPhim: Yup.number()
-                .required('Mã Phim Không Được Trống'),
-            tenPhim: Yup.string()
-                .required('Tên Phim Không Được Trống'),
-            trailer: Yup.string()
-                .required('Trailer Không Được Trống')
-                .matches(/www.youtube.com\/embed\/[A-z0-9]+/, "URL Không Đúng Định Dạng"),
-            sapChieu: Yup.boolean()
-                .required("Không "),
-            moTa: Yup.string()
-                .required('Mô Tả Không Được Trống'),
-            ngayKhoiChieu: Yup.string()
-                .required('Ngày Khởi Chiếu Không Được Trống'),
-            danhGia: Yup.number()
-                .min(1, 'Trong khoảng 1 - 10')
-                .max(10, 'Trong khoảng 1 - 10')
-                .required('Đánh Giá Không Được Trống'),
-            // Anh chỉ giúp e chỗ validate hinhAnh 
-        }),
-        
-        onSubmit: (values,{resetForm}) => {
-            console.log("values",values)
+        validationSchema,
+        onSubmit: async(values) =>{
+            values.ngayKhoiChieu = await moment(values.ngayKhoiChieu).format('DD-MM-YYYY')
             let formData = new FormData();
             for (let key in values) {
                 if (key !== 'hinhAnh') {
                     formData.append(key, values[key])
                 } else {
-                    formData.append('File', values.hinhAnh, values.hinhAnh.name)
-                    console.log(formData)
+                    if(values.hinhAnh !== null){
+                        formData.append('File', values.hinhAnh, values.hinhAnh.name)
+                    }
                 }
             }
-            // props.dispatch(addMovieUpLoadImgAction(formData))
-            resetForm();
-        }
+            dispatch(updateMovieAction(formData))
+            props.handleCloseUpdate()
+        },
+        
+
     })
     const handleNgayKC = (date) => {
-        const ngayKC = moment(date).format("DD-MM-YYYY");
-        console.log("ngayKC",ngayKC)
-        formik.setFieldValue('ngayKhoiChieu', ngayKC)
+        console.log("ngayKC",date)
+        formik.setFieldValue('ngayKhoiChieu', date)
     }
 
     const handleChangedanhGia = (e) => {
@@ -97,7 +99,7 @@ export const UpdateFilm = (props) =>{
                 <Modal.Title>Cập Nhật Phim</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <form id="create-course-form" onSubmit={formik.handleSubmit}>
+                <form onSubmit={formik.handleSubmit}>
                     <div className="form-row" style={{ display: "flex", justifyContent: "space-between" }}>
                         <div className="form-group col-md-5">
                             <label htmlFor="inputEmail4">Mã Phim</label>
@@ -115,7 +117,7 @@ export const UpdateFilm = (props) =>{
                             <label htmlFor="exampleFormControlFile1">Hình Ảnh</label>
                             <input type="file" accept="image/jpeg" name="hinhAnh" onChange={handleChangeFile} className="form-control-file" />
                             <br />
-                            {imgsrc ? (<img style={{ height: "100px", width: "100px" }} src={imgsrc} alt=""></img>) : ''}
+                         <img style={{ height: "100px", width: "100px" }} src={imgsrc === "" ? movieInfo.hinhAnh:imgsrc} alt=""></img>
                             {formik.errors.hinhAnh && (<div class="invalid-feedback">{formik.errors.hinhAnh}</div>)}
                         </div>
                         <div className="form-group col-md-4">

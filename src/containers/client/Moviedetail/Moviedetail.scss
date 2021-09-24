@@ -3,6 +3,40 @@
     background-size: cover;
     background-repeat: no-repeat;
 }
+.moviedetail-bg{
+    min-height: 400px;
+}
+.moviedetail-blur{
+    min-height: 400px;
+}
+@media screen and (max-width:576px) {
+    .col-4{
+        display: none;
+    }
+    .moviedetail-card{
+        width: 90% !important;
+        top: 42% !important;
+        left: 55% !important;
+    }
+    .moviedetail-bg{
+        min-height: 200px;
+        .moviedetail-blur{
+            min-height: 200px;
+        }
+    }
+
+}
+
+@media screen and (max-width:800px) {
+    .moviedetail-card{
+        width: 90% !important;
+        top: 45% !important;
+        left: 50% !important;
+    }
+    .col-sm-8{
+        padding-left: 60px !important;
+    }
+}
 .moviedetail-card{
     position: absolute;
     margin-bottom: 100px;
@@ -147,47 +181,6 @@
   -webkit-radial-gradient(0 100%, circle, rgba(204, 102, 153, 0) 14px, rgba(255, 23, 68, 0.8) 15px), -webkit-radial-gradient(100% 100%, circle, rgba(204, 102, 153, 0) 14px, rgba(255, 23, 68, 0.8) 15px), -webkit-radial-gradient(100% 0, circle, rgba(204, 102, 153, 0) 14px, rgba(255, 23, 68, 0.8) 15px), -webkit-radial-gradient(0 0, circle, rgba(204, 102, 153, 0) 14px, rgba(255, 23, 68, 0.8) 15px)
 }
 
-// .tixInner {
-//   display: table-cell;
-//   vertical-align: middle;
-//   text-align: center;
-// }
-
-// .tixInner:before {
-//     z-index: 0;
-//     content: "";
-//     display: block;
-//     width: 186px;
-//     height: 86px;
-//     position: absolute;
-//     left: 8px; 
-//     top: 8px;
-        
-//     background:
-//          -webkit-radial-gradient(0 100%, circle, rgba(255,255,255,0) 14px, white 15px),
-//          -webkit-radial-gradient(100% 100%, circle, rgba(255,255,255,0) 14px, white 15px),
-//          -webkit-radial-gradient(100% 0, circle, rgba(255,255,255,0) 14px, white 15px),
-//          -webkit-radial-gradient(0 0, circle, rgba(255,255,255,0) 14px, white 15px);
-// }
-
-// .tixInner:after {
-//     z-index: 0;
-//     content: "";
-//     display: block;
-//     width: 182px; 
-//     height: 82px;
-//     position: absolute;
-//     left: 10px; 
-//     top: 10px; 
-        
-//     background:
-//          -webkit-radial-gradient(0 100%, circle, rgba(204,102,153,0) 14px, #c69 15px),
-//          -webkit-radial-gradient(100% 100%, circle, rgba(204,102,153,0) 14px, #c69 15px),
-//          -webkit-radial-gradient(100% 0, circle, rgba(204,102,153,0) 14px, #c69 15px),
-//          -webkit-radial-gradient(0 0, circle, rgba(204,102,153,0) 14px, #c69 15px);
-// }
-
-
 .tix,
 .tix:before,
 .tix:after {
@@ -208,3 +201,4 @@
 }
 
 a {text-decoration: none;}
+

@@ -7,15 +7,23 @@ import './Sidebar.scss';
 
 
 function Navbar() {
-
+  const _handleClick = ()=>{
+    var a = document.querySelectorAll(".listsidebar .sidebar-item a");
+for (var i = 0, length = a.length; i < length; i++) {
+a[i].onclick = function() {
+var b = document.querySelector(".listsidebar .sidebar-item.active");
+if (b) b.classList.remove("active");
+this.parentNode.classList.add('active');
+};
+}
+}
   return (
     <div className="sidebar">
-      <h4 className="logo">CINEMA BOOKING</h4>
+      <Link to='/' className="logo">CINEMA BOOKING</Link>
         <ul className="listsidebar">
-          <li className="sidebar-item"><Link to="/admin"><AiFillDashboard style={{margin:'0 5px 3px 0'}}/> DashBoard</Link></li>
-          <li className="sidebar-item"><Link to="/admin/user"><FaUserCircle style={{margin:'0 5px 3px 0'}}/> User</Link></li>
-          <li className="sidebar-item"><Link to="/admin/showtime"><MdMovieFilter style={{margin:'0 8px 3px 0'}}/>Showtime</Link></li>
-          <li className="sidebar-item"><Link>huygiale</Link></li>
+          <li onClick={_handleClick} className="sidebar-item"><Link to="/admin"><AiFillDashboard style={{margin:'0 5px 3px 0'}}/> Trang Chủ</Link></li>
+          <li onClick={_handleClick} className="sidebar-item"><Link to="/admin/user"><FaUserCircle style={{margin:'0 5px 3px 0'}}/> Quản Lý Người Dùng</Link></li>
+          <li onClick={_handleClick} className="sidebar-item"><Link to="/admin/film"><MdMovieFilter style={{margin:'0 8px 3px 0'}}/>Quản Lý Phim</Link></li>
         </ul>
     </div>
   );

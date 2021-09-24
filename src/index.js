@@ -10,6 +10,7 @@ import '@tsamantanis/react-glassmorphism/dist/index.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import "react-datepicker/dist/react-datepicker.css"
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'font-awesome/css/font-awesome.min.css'
 import reportWebVitals from './reportWebVitals';
 import store from './store'
 import {Provider} from 'react-redux'

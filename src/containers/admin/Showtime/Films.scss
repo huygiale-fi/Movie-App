@@ -38,6 +38,9 @@
 .btnShowtime{
     @extend .btnDelete;
     background-color:rgb(13, 105, 158) ;
+    &:hover{
+        color: #fff;
+    }
 }
 .invalid-feedback{
     display: block !important;
@@ -72,5 +75,11 @@
   
   .paginationDisabled a {
     cursor: no-drop;
-    
   }
+  .modaldelete{
+      top:30% !important;
+      
+  }
+  .modal-backdrop{
+    background-color: rgba(0,0,0,.2) !important;
+}

@@ -10,8 +10,9 @@ import BookingTicket from 'containers/client/Booking/BookingTicket';
 import Navbar from 'containers/admin/Sidebar';
 import AdminLayout from 'layout/AdminLayout';
 import PageNotFound from 'containers/Shared/PageNotFound';
+import Login from 'containers/client/Auth/Login/Login';
 export const history = createBrowserHistory()
-const Login = React.lazy(()=>import('containers/client/Auth/Login/Login'))
+
 function App() {
   const renderLayout=(routes,Layout)=>{
     return routes.map(route=>{
@@ -29,7 +30,6 @@ function App() {
     <div className="App">
       <Toaster/>
       <Router history={history}>
-        <Suspense fallback={<div>Loading...</div>}>
         <Switch>  
           {renderLayout(clientRoutes,ClientLayout)}
           {renderLayout(adminRoutes,AdminLayout)}
@@ -38,7 +38,6 @@ function App() {
           <Route exact path="/seat-plan/:id" component={BookingTicket}></Route>
           <Route  path="*" component={PageNotFound}></Route>
         </Switch>
-        </Suspense>
       </Router>
     </div>
   )

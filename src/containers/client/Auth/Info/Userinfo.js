@@ -13,7 +13,7 @@ export default function Userinfo() {
     if (!user) {
         return <Redirect to="/login" />
     }
-    if (isloaduser) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+    if (isloaduser) return <Loader type="Bars" color="#ff1744" height={80} width={80} style={{display:"flex",justifyContent:"center",height:'100vh',alignItems: "center"}}/>
     return (
         <div className="container userinfo-bg" >
             <div className="p-4">

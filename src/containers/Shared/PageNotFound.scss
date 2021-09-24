@@ -1,7 +1,15 @@
 .page-not-found {
-    display: flex;
-    justify-content: center;
+    display: block;
+    text-align: center;
     img {
         height: 68.5vh;
+    }
+    button {
+        display: block;
+        a {
+            color: white;
+            text-decoration: none;
+        }
+        margin: auto;
     }
 }

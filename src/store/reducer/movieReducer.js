@@ -1,5 +1,5 @@
 import * as movieType from '../constants/movieType'
-
+import toast from 'react-hot-toast'
 const initialState = {
     movie:[],
     movieAll:[],
@@ -44,23 +44,33 @@ const movieReducer = (state = initialState, { type, payload }) => {
     case movieType.ADD_MOVIEIMG_REQUEST:
         return{...state}
     case movieType.ADD_MOVIEIMG_SUCCESS:
+        toast.success("Thêm Phim Thành Công")
         return{...state}
     case movieType.ADD_MOVIEIMG_FAILED:
-        console.log(payload)
+        toast.error("Thêm Phim Thất Bại")
         return{...state}
     case movieType.FETCH_MOVIEINFO_REQUEST:
         return{...state}
     case movieType.FETCH_MOVIEINFO_SUCCESS:
+        toast.success("Tải dữ liệu thành công")
         return{...state,movieInfo:payload}
     case movieType.FETCH_MOVIEINFO_FAILED:
         return{...state,errors:payload}
+    case movieType.UPDATE_MOVIE_REQUEST:
+        return{...state}
+    case movieType.UPDATE_MOVIE_SUCCESS:
+        toast.success("Cập Nhật Thành Công")
+        return{...state}
+    case movieType.UPDATE_MOVIE_FAILED:
+        toast.error("Cập Nhật Thất Bại")
+        return{...state}    
     case movieType.DELETE_MOVIE_REQUEST:
         return{...state}
     case movieType.DELETE_MOVIE_SUCCESS:
-        alert("Xóa Thành Công")
+        toast.success("Xóa Thành Công")
         return{...state}
     case movieType.DELETE_MOVIE_FAILED:
-        alert("Xóa Thất Bại")
+        toast.error("Xóa Thất Bại")
         return{...state,errors:payload}
     default:
         return state

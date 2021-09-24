@@ -16,7 +16,7 @@ const authApi = {
             method:'post',
             headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')}
         })
-    }
+    },
 }
 
 export default authApi;

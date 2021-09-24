@@ -12,7 +12,7 @@ export default function ComingSoon() {
     const ComingSoon = movieAll.filter(item=>item.sapChieu===true)
     let renderComingSoon = () => (
         ComingSoon?.map(movie => (
-            <Col lg="3" md="6" sm="12" >
+            <Col sm={12} >
                 <div className="movie-item-contents gradient1" style={{height:'355px' }}>
                     <Image src={movie.hinhAnh}></Image>
                     <div className="movie-item-content">
@@ -50,7 +50,33 @@ export default function ComingSoon() {
             autoplay:true,
             speed: 1000,
             slidesToShow: 5,
-            slidesToScroll: 5
+            slidesToScroll: 5,
+            responsive: [
+                {
+                  breakpoint: 1024,
+                  settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                  }
+                },
+                {
+                  breakpoint: 600,
+                  settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                  }
+                },
+                {
+                  breakpoint: 480,
+                  settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                  }
+                }
+              ]
         }
 
     return (

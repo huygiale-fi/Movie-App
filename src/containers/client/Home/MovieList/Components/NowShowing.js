@@ -17,7 +17,7 @@ export default function NowShowing() {
     console.log({nowshowing})
     let renderNowShowing = () => (
         nowshowing?.map(movie => (
-            <Col lg="3" md="6" sm="12" >
+            <Col sm={12} >
                 <div className="movie-item-contents gradient1" style={{height:'355px' }}>
                     <Image src={movie.hinhAnh}></Image>
                     <div className="movie-item-content">
@@ -63,7 +63,33 @@ export default function NowShowing() {
         speed: 1000,
         autoplay:true,
         slidesToShow: 5,
-        slidesToScroll: 5
+        slidesToScroll: 5,
+        responsive: [
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToShow: 3,
+            slidesToScroll: 3,
+            infinite: true,
+            dots: true
+          }
+        },
+        {
+          breakpoint: 600,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 2,
+            initialSlide: 2
+          }
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            slidesToShow: 1,
+            slidesToScroll: 1
+          }
+        }
+      ]
     }
     return (
         <div className="container" style={{paddingTop:"100px",paddingBottom:'50px'}}>

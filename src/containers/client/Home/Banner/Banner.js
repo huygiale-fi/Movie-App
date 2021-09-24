@@ -26,7 +26,7 @@ export default function Banner() {
     marginRight: 20,
   };
   if (isLoading)
-    return <Loader type="Bars" color="#00BFFF" height={80} width={80} />;
+    return <Loader type="Bars" color="#ff1744" height={80} width={80} style={{display:"flex",justifyContent:"center",height:'300px',alignItems: "center"}}/>
   return (
     <div>
       <section className="banner">

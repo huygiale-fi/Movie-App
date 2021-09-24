@@ -63,12 +63,12 @@ export const addMovieUpLoadImgAction = (formdData)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.ADD_MOVIEIMG_REQUEST})
         const response = await movieApi.addMovieUpLoadImg(formdData);
-        alert('Thêm thành công')
-        console.log(response.data.content)
+        console.log(response)
         dispatch({
             type:movieType.ADD_MOVIEIMG_SUCCESS,
             payload: response.data.content,
         })
+        dispatch(fetchAllMovieAction())
     }catch(err){
         dispatch({
             type:movieType.ADD_MOVIEIMG_FAILED,
@@ -98,11 +98,11 @@ export const updateMovieAction = (formData)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.UPDATE_MOVIE_REQUEST})
         const response = await movieApi.updateMovieApi(formData);
-        console.log("action",response.data.content);
         dispatch({
             type:movieType.UPDATE_MOVIE_SUCCESS,
             payload: response.data.content,
         })
+         dispatch(fetchAllMovieAction())
     }catch(err){
         dispatch({
             type:movieType.UPDATE_MOVIE_FAILED,
@@ -111,8 +111,7 @@ export const updateMovieAction = (formData)=>async(dispatch)=>{
     }
 }
 
-export const deleteMovieAction = (maphim)=>async(dispatch,getState)=>{
-    const {page} = getState().movieReducer
+export const deleteMovieAction = (maphim)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.DELETE_MOVIE_REQUEST})
         const response = await movieApi.deleteMovieApi(maphim);
@@ -121,7 +120,7 @@ export const deleteMovieAction = (maphim)=>async(dispatch,getState)=>{
             type:movieType.DELETE_MOVIE_SUCCESS,
             payload: response.data.content,
         })
-        dispatch(fetchAllMoviePageAction(page))
+        dispatch(fetchAllMovieAction())
     }catch(err){
         dispatch({
             type:movieType.DELETE_MOVIE_FAILED,

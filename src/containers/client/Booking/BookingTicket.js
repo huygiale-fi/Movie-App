@@ -12,8 +12,8 @@ export default function BookingTicket() {
     const dispatch = useDispatch()
     const { id } = useParams()
     const { DsGhe, DsGheDangDat } = useSelector(state => state.bookingReducer)
-    const { islogged } = useSelector(state => state.authReducer)
     const user = JSON.parse(localStorage.getItem('user'))
+    const islogged = user ? true : false;
     const [show, setshow] = useState(false)
     const handleClose = () => setshow(false);
     const handleShow = () => setshow(true);

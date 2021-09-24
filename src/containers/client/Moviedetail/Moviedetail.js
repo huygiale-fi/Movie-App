@@ -64,9 +64,9 @@ export default function Moviedetail() {
     }, [])
     return (
         <div>
-            <div className="moviedetail-bg" style={{ backgroundImage: `url(${showtime.hinhAnh})`, minHeight: '400px' }}>
-                <CustomCard
-                    style={{ paddingTop: '200px', minHeight: '400px', position: 'relative' }}
+            <div className="moviedetail-bg" style={{ backgroundImage: `url(${showtime.hinhAnh})` }}>
+                <CustomCard className="moviedetail-blur"
+                    style={{ paddingTop: '200px', position: 'relative' }}
                     effectColor="#060f19" // required
                     color="#fff" // default color is white
                     blur={10} // default blur value is 10px
@@ -80,12 +80,12 @@ export default function Moviedetail() {
                     <div className="row moviedetail-card">
                         
                         <div className="row">
-                            <div className="col-4">
+                            <div className="col-4 ">
                                 <div className="moviedetail-img">
                                     <img src={showtime.hinhAnh}></img>
                                 </div>
                             </div>
-                            <div className="col-8">
+                            <div className="col-12 col-sm-8">
                                 <div className="moviedetail-namemovie">
                                     <h3>{showtime.tenPhim}</h3>
                                 </div>

@@ -78,16 +78,16 @@ export default function Header() {
           >
             <ul className="navbar-nav">
               <li className="nav-item">
-                <i className="fa fa-user"></i>
                 {!user ? (<Link className="nav-link btn btn-primary" to="/login">
                   LOGIN
                 </Link>):(
                     <Dropdown>
                     <Dropdown.Toggle variant="success" id="dropdown-basic">
-                     {user.hoTen?.length > 9 ? user.hoTen?.substring(0,9) : user.hoTen}
+                     {user?.hoTen?.length > 9 ? user.hoTen?.substring(0,9) : user.hoTen}
                     </Dropdown.Toggle>
                   
                     <Dropdown.Menu classname="dropdown-user">
+                      {user?.maLoaiNguoiDung === 'QuanTri' ? <Dropdown.Item > <Link to="/admin" >Admin</Link></Dropdown.Item> : null}
                     <Dropdown.Item > <Link to="/user" >Your Info</Link></Dropdown.Item>
                     <Dropdown.Item> <Link to="/history">History Booking Ticket</Link> </Dropdown.Item>
                     <Dropdown.Item onClick={onLogout}><Link  to="/logout"></Link>Logout</Dropdown.Item>

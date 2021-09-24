@@ -16,9 +16,9 @@ export default function History() {
     thongTinDatVe?.map((infoticket) => {
     const barcode = `https://www.webarcode.com/barcode/image.php?code=123231231${infoticket.maVe}${infoticket.giaVe} &type=C128B&xres=1&height=80&width=180&font=30&output=png&style=196`
       // eslint-disable-next-line no-lone-blocks
-        return <Row className="py-3 border-3" key={infoticket.maVe}>
-        <Col md="4">
-        <Image className="w-100 h-100" src={infoticket.hinhAnh}></Image>
+        return <Row className="py-3 border-3" style={{borderBottom:"2px solid #ff1744"}} key={infoticket.maVe}>
+        <Col md="4" >
+        <Image className="w-100" style={{height:"300px"}} src={infoticket.hinhAnh}></Image>
       </Col>
         <Col md="8">
           <h4 style={{borderBottom:"1px solid gray"}}>{infoticket.tenPhim}</h4>
@@ -47,15 +47,16 @@ export default function History() {
         </Row>
     })
   )
-  if (isloaduser) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+  if (isloaduser) return <Loader type="Bars" color="#ff1744" height={80} width={80} style={{display:"flex",justifyContent:"center",height:'100vh',alignItems: "center"}}/>
   return (
     <div>
       {thongTinDatVe?.length === 0 ?
        (<div className="vh-100 textcenter d-flex flex-column justify-content-center align-items-center">
-         <h3>Chưa Đặt Vé</h3>
+         <h3>Chưa Đặt Vé</h3> 
        </div>)  :
         (
-<Container className="w-50">
+<Container className="w-50 pt-5">
+          <h3 className="text-center pt-3 ">Lịch Sử Đặt Vé</h3>
           { renderHistoryBooking()}
       </Container>
       )  

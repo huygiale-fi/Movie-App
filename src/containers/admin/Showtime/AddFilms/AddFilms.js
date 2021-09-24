@@ -2,10 +2,12 @@ import React, { useState } from 'react'
 import moment from 'moment'
 import DatePicker from "react-datepicker";
 import { Button,Modal } from 'react-bootstrap'
-import { addMovieUpLoadImgAction, fetchAllMoviePageAction } from 'store/action/movieActions'
-import { useDispatch, useSelector, connect } from 'react-redux'
+import { addMovieUpLoadImgAction } from 'store/action/movieActions'
+import { connect } from 'react-redux'
+import _ from 'lodash'
 import { withFormik } from 'formik'
 import * as Yup from 'yup'
+import toast from 'react-hot-toast';
 function AddFilms(props) {
     const [startDate, setStartDate] = useState();
     const [danhGia, setdanhGia] = useState(1);
@@ -48,7 +50,7 @@ function AddFilms(props) {
                     <Modal.Title>Thêm Phim</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                <form id="create-course-form" onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
             <div className="form-row" style={{ display: "flex", justifyContent: "space-between" }}>
                 <div className="form-group col-md-5">
                     <label htmlFor="inputEmail4">Mã Phim</label>
@@ -118,7 +120,6 @@ function AddFilms(props) {
                 </Button>
             </div>
         </form>
-                    
                 </Modal.Body>
             </Modal>
         
@@ -162,19 +163,29 @@ const FormAddMovieFormik = withFormik({
             .required('Đánh Giá Không Được Trống'),
     }),
 
-    handleSubmit: (values, formikBag, { props, setSubmitting }) => {
-        console.log(values);
+    handleSubmit: (values, {props, setSubmitting }) => {
+       
         let formData = new FormData();
         for (let key in values) {
             if (key !== 'hinhAnh') {
                 formData.append(key, values[key])
             } else {
-                formData.append('File', values.hinhAnh, values.hinhAnh.name)
-                console.log(formData)
+                if(_.isEmpty(values.hinhAnh.name) === true)
+                {
+                   toast.error("Bạn Chưa Thêm Hình Ảnh")
+                   return;
+                }
+                else{
+                    formData.append('File', values.hinhAnh, values.hinhAnh.name)
+                    console.log(values);
+                }
             }
         }
         props.dispatch(addMovieUpLoadImgAction(formData))
-        
+        props.handleCloseAdd()
+        props.setimgsrc('')
+        setSubmitting(false);
+
     },
 
     displayName: 'AddMovie',

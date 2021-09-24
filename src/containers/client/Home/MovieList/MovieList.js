@@ -68,7 +68,7 @@ export default function MovieList() {
     }
  
 
-    if (isLoading) return <Loader type="Bars" color="#00BFFF" height={80} width={80} />
+    if (isLoading) return <Loader type="Bars" color="#ff1744" height={80} width={80} style={{display:"flex",justifyContent:"center",height:'100px',alignItems: "center"}}/>
     return (
         <>
             <div className="container flex mt-4 mb-4">
