@@ -9,7 +9,7 @@ const authApi = {
         return callApi(`QuanLyNguoiDung/DangNhap`,'POST',data)
     },
     postUserApi:()=>{
-        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan';
+        const url = 'https://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan';
         
         return axios({
             url:url,
