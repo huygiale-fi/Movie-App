@@ -15,7 +15,7 @@ const showtimeApi = {
         return callApi(`QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${htRap}`)
     },
     postTaoShowTime(data){
-        const url = 'https://movieapi.cyberlearn.vn/api/QuanLyDatVe/TaoLichChieu';
+        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyDatVe/TaoLichChieu';
         
         return axios({
             url:url,
