@@ -9,6 +9,7 @@
     "@tsamantanis/react-glassmorphism": "^1.1.2",
     "axios": "^0.21.2",
     "bootstrap": "^5.1.0",
+    "font-awesome": "^4.7.0",
     "formik": "^2.2.9",
     "jquery": "^3.6.0",
     "lightgallery": "^2.2.1",

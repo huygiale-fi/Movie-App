@@ -113,7 +113,9 @@ export default function BookingTicket() {
                                 <Button onClick={handleShow} className="buyticket-mobile">Tiếp Tục</Button>
                             </Tab.Pane>
                             <Tab.Pane eventKey="second">
-                                legiahuy
+                                <div className="text-center mt-5">
+                                <Link to="/history" style={{padding:"10px 20px",backgroundColor:"#ff1744",color:"#fff",fontWeight:"500",borderRadius:"10px",textDecoration:"none"}}>Lịch Sử Đặt Vé</Link>
+                                </div>
                             </Tab.Pane>
                         </Tab.Content>
                     </Tab.Container>

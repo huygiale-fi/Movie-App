@@ -44,7 +44,7 @@ export const  UpdateFilm = (props) => {
             tenPhim: movieInfo?.tenPhim,
             trailer: movieInfo?.trailer,
             moTa: movieInfo.moTa,
-            maNhom: 'GP01',
+            maNhom: 'GP05',
             ngayKhoiChieu: movieInfo?.ngayKhoiChieu,
             sapChieu: movieInfo?.sapChieu,
             dangChieu: movieInfo?.dangChieu,

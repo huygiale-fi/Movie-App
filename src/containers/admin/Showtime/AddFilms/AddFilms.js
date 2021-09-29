@@ -131,7 +131,7 @@ const FormAddMovieFormik = withFormik({
         tenPhim: '',
         trailer: '',
         moTa: '',
-        maNhom: 'GP01',
+        maNhom: 'GP05',
         ngayKhoiChieu: '',
         sapChieu: false,
         dangChieu: false,
