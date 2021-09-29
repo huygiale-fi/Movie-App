@@ -5,6 +5,7 @@ import './History.scss'
 import { useSelector } from 'react-redux';
 import { Redirect } from 'react-router';
 import Loader from 'react-loader-spinner'
+import _ from 'lodash'
 export default function History() {
   const { user,userpost,isloaduser } = useSelector(state => state.authReducer)
   const thongTinDatVe = userpost?.thongTinDatVe;
@@ -13,7 +14,7 @@ export default function History() {
   }
   let renderHistoryBooking = () => (
     
-    thongTinDatVe?.map((infoticket) => {
+    _.orderBy(thongTinDatVe,['maVe'])?.map((infoticket) => {
     const barcode = `https://www.webarcode.com/barcode/image.php?code=123231231${infoticket.maVe}${infoticket.giaVe} &type=C128B&xres=1&height=80&width=180&font=30&output=png&style=196`
       // eslint-disable-next-line no-lone-blocks
         return <Row className="py-3 border-3" style={{borderBottom:"2px solid #ff1744"}} key={infoticket.maVe}>

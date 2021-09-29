@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useParams,useHistory } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import { AiOutlineClose } from 'react-icons/ai'
+import _ from 'lodash'
 import { CgDanger } from 'react-icons/cg'
 import { fetchListSeatAction, postDatVeAction, SeletedTicket } from 'store/action/bookingAction'
 import './BookingTicket.scss'
@@ -131,7 +132,7 @@ export default function BookingTicket() {
                         <Image className="imginfo" src={thongTinPhim?.hinhAnh}></Image>
                     </div>
                     <div className="seatBooking">
-                        <div className="title">Ghế: {DsGheDangDat?.map((ghedd, index) => {
+                        <div className="title">Ghế: {_.orderBy(DsGheDangDat,['stt'])?.map((ghedd, index) => {
                             return <span key={index}>{ghedd.stt}, </span>
                         }
                         )}</div>
