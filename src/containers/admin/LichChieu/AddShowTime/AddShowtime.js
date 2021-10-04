@@ -33,7 +33,6 @@ export default function AddShowtime(props) {
         },
         validationSchema,
         onSubmit:(values)=>{
-            console.log(values);
             dispatch(postGreateShowTime(values))
             props.handleCloseLichChieu()
         }
@@ -42,10 +41,8 @@ export default function AddShowtime(props) {
         return time.getHours() > 12 ? "text-success" : "text-error";
       };
     const handleNgayGioChieu = (date)=>{
-        console.log(date);
         setdate(date)
         const NgayGioChieu = moment(date).format('DD/MM/yyyy hh:mm:ss')
-        console.log('NgayGioChieu',NgayGioChieu);
         formik.setFieldValue('ngayChieuGioChieu',NgayGioChieu)
         
     }
@@ -54,12 +51,10 @@ export default function AddShowtime(props) {
     }, [])
     const handleHeThongRap= (e)=>{
         const {value} = e.target
-        console.log(value);
         dispatch(fetchCumRapAction(value))
     }
     const handleCumRap = (e)=>{
         const {value} = e.target
-        console.log(value);
         formik.setFieldValue("maRap",value)
     }
     return (

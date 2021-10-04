@@ -92,7 +92,6 @@ const FormLoginFormik = withFormik({
     }),
 
     handleSubmit: (values, { props, setSubmitting }) => {
-        console.log(values)
         props.dispatch(postLoginAction(values))
     },
 

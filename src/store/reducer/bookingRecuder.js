@@ -18,7 +18,6 @@ const bookingReducer = (state = initialState, { type, payload }) => {
         return { ...state,isLoading:false }
     case bookingType.SELECT_TICKER:
         let dsGheUpdate = [...state.DsGheDangDat]
-        console.log({dsGheUpdate});
         let index = dsGheUpdate.findIndex(ghe=>ghe.maGhe === payload.maGhe);
         if(index!==-1){
             dsGheUpdate.splice(index,1)
@@ -34,14 +33,11 @@ const bookingReducer = (state = initialState, { type, payload }) => {
     case bookingType.POST_DATVE_REQUEST:
         return {...state,isLoading:true}
     case bookingType.POST_DATVE_SUCCESS:
-        console.log(payload)
         return {...state,isLoading:false}
     case bookingType.POST_DATVE_FAILED:
-        console.log(payload)
         return {...state}
         
     case bookingType.DAT_VE_HOAN_TAT:
-        console.log(payload)
         return {...state,DsGheDangDat:[],isLoading:false}
     default:
         return state

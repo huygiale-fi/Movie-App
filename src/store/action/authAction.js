@@ -36,7 +36,6 @@ export const postUserAction=()=>async(dispatch)=>{
     try{
         dispatch({type:authType.POST_USER_REQUEST})
         const response = await authApi.postUserApi();
-        console.log(response)
         dispatch({
             type:authType.POST_USER_SUCCESS,
             payload:response.data.content

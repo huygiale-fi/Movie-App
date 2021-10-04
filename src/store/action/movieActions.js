@@ -63,7 +63,6 @@ export const addMovieUpLoadImgAction = (formdData)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.ADD_MOVIEIMG_REQUEST})
         const response = await movieApi.addMovieUpLoadImg(formdData);
-        console.log(response)
         dispatch({
             type:movieType.ADD_MOVIEIMG_SUCCESS,
             payload: response.data.content,
@@ -81,7 +80,6 @@ export const fetchMovieInfoAction = (maphim)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.FETCH_MOVIEINFO_REQUEST})
         const response = await movieApi.fetchMovieInfoApi(maphim);
-        console.log("action",response.data.content);
         dispatch({
             type:movieType.FETCH_MOVIEINFO_SUCCESS,
             payload: response.data.content,
@@ -115,7 +113,6 @@ export const deleteMovieAction = (maphim)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.DELETE_MOVIE_REQUEST})
         const response = await movieApi.deleteMovieApi(maphim);
-        console.log("action",response.data.content);
         dispatch({
             type:movieType.DELETE_MOVIE_SUCCESS,
             payload: response.data.content,

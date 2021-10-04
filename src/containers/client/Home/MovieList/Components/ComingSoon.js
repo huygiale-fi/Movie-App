@@ -9,7 +9,7 @@ import { Link } from 'react-router-dom'
 
 export default function ComingSoon() {
     const {movieAll} = useSelector(state => state.movieReducer)
-    const ComingSoon = movieAll.filter(item=>item.sapChieu===true)
+    const ComingSoon = movieAll?.filter(item=>item.sapChieu===true)
     let renderComingSoon = () => (
         ComingSoon?.map(movie => (
             <Col sm={12} >

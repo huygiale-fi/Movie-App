@@ -15,7 +15,6 @@ import { Link } from 'react-router-dom'
 export default function Films(props) {
     const dispatch = useDispatch()
     const { movieAll } = useSelector(state => state.movieReducer)
-    console.log(movieAll)
     const [search, setSearch] = useState('')
     const [addMovie, setAddMovie] = useState(false)
     const [deleteMovie, setdeleteMovie] = useState(false)
@@ -34,8 +33,7 @@ export default function Films(props) {
     const usersPerPage = 10;
     const pagesVisited = pagenumber * usersPerPage;
     const displayUsers = movieAll?.slice(pagesVisited, pagesVisited + usersPerPage)
-    console.log(displayUsers)
-    const pageCount = Math.ceil(movieAll.length / usersPerPage);
+    const pageCount = Math.ceil(movieAll?.length / usersPerPage);
     const handleShowUpdate = (maphim) => {
         setupdateMovie(true);
         dispatch(fetchMovieInfoAction(maphim))

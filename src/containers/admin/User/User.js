@@ -49,7 +49,6 @@ export default function User() {
       userApi
         .addUserApi(user, token)
         .then((response) => {
-          console.log(response);
           dispatch(actFetchUserAction());
         })
         .catch((error) => {
@@ -68,7 +67,6 @@ export default function User() {
     userApi
       .deleteUserApi(taiKhoan, token)
       .then((res) => {
-        console.log(res);
         dispatch(actFetchUserAction());
         dispatch(actSearchUserAction())
       })
@@ -102,7 +100,6 @@ export default function User() {
       userApi
         .updateUserApi(temp, token)
         .then((res) => {
-          console.log(res);
           dispatch(actFetchUserAction());
         })
         .catch((err) => {

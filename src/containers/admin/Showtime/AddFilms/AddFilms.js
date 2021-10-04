@@ -33,9 +33,7 @@ function AddFilms(props) {
     }
 
     const handleChangeFile = (e) => {
-        console.log(e)
         let file = e.target.files[0];
-        console.log(file)
         setFieldValue('hinhAnh', file)
         //Tạo đối tượng đọc file
         let reader = new FileReader()
@@ -177,7 +175,6 @@ const FormAddMovieFormik = withFormik({
                 }
                 else{
                     formData.append('File', values.hinhAnh, values.hinhAnh.name)
-                    console.log(values);
                 }
             }
         }

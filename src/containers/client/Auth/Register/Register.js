@@ -106,7 +106,6 @@ const FormRegisterFormik = withFormik({
     }),
 
     handleSubmit: (values, { props, setSubmitting }) => {
-        console.log(values)
         props.dispatch(postRegisterAction(values))
     },
 

@@ -13,8 +13,7 @@ export default function NowShowing() {
     useEffect(() => {
         dispatch(fetchAllMovieAction())
     }, [])
-    const nowshowing = movieAll.filter(item=>item.dangChieu===true)
-    console.log({nowshowing})
+    const nowshowing = movieAll?.filter(item=>item.dangChieu===true)
     let renderNowShowing = () => (
         nowshowing?.map(movie => (
             <Col sm={12} >

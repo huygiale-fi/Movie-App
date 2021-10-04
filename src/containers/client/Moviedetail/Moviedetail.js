@@ -20,13 +20,9 @@ export default function Moviedetail() {
 
 
     const handleSelectHeThongRap = (event) => {
-        console.log("showtime", showtime.heThongRapChieu);
         const { value } = event.target;
-        console.log("value:", value);
         const ds = showtime.heThongRapChieu.filter(item => item.maHeThongRap === value)
-        console.log({ ds })
         setCumRap(ds)
-        console.log('CumRap', CumRap[0]?.cumRapChieu)
     }
 
 
@@ -37,7 +33,6 @@ export default function Moviedetail() {
     }
     const handleSelectCumRap = (event) => {
         const { value } = event.target;
-        console.log({ value });
         const dsLichChieu = CumRap[0]?.cumRapChieu?.filter(item => item.tenCumRap === value)
         setLichChieu(dsLichChieu)
     }

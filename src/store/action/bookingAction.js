@@ -20,9 +20,7 @@ export const postDatVeAction=(data)=>async(dispatch)=>{
     try{
 
         dispatch({type:bookingType.POST_DATVE_REQUEST})
-        console.log(data)
         const response = await bookingApi.postDatVeApi(data);
-        console.log("booking",response.data.content)
         dispatch({
             type:bookingType.POST_DATVE_SUCCESS,
             payload:response.data.content

@@ -33,7 +33,6 @@ const validationSchema =Yup.object().shape({
 export const  UpdateFilm = (props) => {
     const dispatch = useDispatch()
     const { movieInfo } = useSelector(state => state.movieReducer)
-    console.log(movieInfo.hinhAnh);
     const [startDate, setStartDate] = useState();
     const [danhGia, setdanhGia] = useState(1);
     const [imgsrc, setimgsrc] = useState('');
@@ -72,7 +71,6 @@ export const  UpdateFilm = (props) => {
 
     })
     const handleNgayKC = (date) => {
-        console.log("ngayKC",date)
         formik.setFieldValue('ngayKhoiChieu', date)
     }
 
@@ -82,9 +80,7 @@ export const  UpdateFilm = (props) => {
     }
 
     const handleChangeFile = (e) => {
-        console.log(e)
         let file = e.target.files[0];
-        console.log(file)
         formik.setFieldValue('hinhAnh', file)
         //Tạo đối tượng đọc file
         let reader = new FileReader()
