@@ -5,7 +5,7 @@ const bookingApi = {
         return callApi(`QuanLyDatVe/LayDanhSachPhongVe?MaLichChieu=${malichchieu}`);
     },
     postDatVeApi:(data)=>{
-        const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyDatVe/DatVe';
+        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyDatVe/DatVe';
         
         return axios({
             url:url,

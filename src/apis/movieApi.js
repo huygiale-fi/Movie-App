@@ -25,7 +25,7 @@ const movieApi = {
         return callApi(`QuanLyPhim/ThemPhimUploadHinh`,"POST",formdata)
     },
     updateMovieApi:(formdata)=>{
-        const url = 'https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/CapNhatPhimUpload';
+        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyPhim/CapNhatPhimUpload';
         
         return axios({
             url:url,
@@ -35,7 +35,7 @@ const movieApi = {
         })
     },
     deleteMovieApi:(maphim)=>{
-        const url = `https://movie0706.cybersoft.edu.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maphim}`;
+        const url = `http://movieapi.cyberlearn.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maphim}`;
         
         return axios({
             url:url,
