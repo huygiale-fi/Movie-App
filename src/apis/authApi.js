@@ -1,5 +1,4 @@
 import callApi from "utils/callApi"
-import axios from 'axios'
 
 const authApi = {
     postRegisterApi:(data)=>{
@@ -9,13 +8,7 @@ const authApi = {
         return callApi(`QuanLyNguoiDung/DangNhap`,'POST',data)
     },
     postUserApi:()=>{
-        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyNguoiDung/ThongTinTaiKhoan';
-        
-        return axios({
-            url:url,
-            method:'post',
-            headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')}
-        })
+        return callApi(`QuanLyNguoiDung/ThongTinTaiKhoan`,"POST",null,localStorage.getItem('accessToken'))
     },
 }
 

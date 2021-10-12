@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {GROUP_ID} from '../settings/apiConfig'
+import {GROUP_ID, TOKEN_CYBERSOFT} from '../settings/apiConfig'
 import callApi from '../utils/callApi';
 
 
@@ -25,23 +25,10 @@ const movieApi = {
         return callApi(`QuanLyPhim/ThemPhimUploadHinh`,"POST",formdata)
     },
     updateMovieApi:(formdata)=>{
-        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyPhim/CapNhatPhimUpload';
-        
-        return axios({
-            url:url,
-            method:'POST',
-            data:formdata,
-            headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')}
-        })
+        return callApi(`QuanLyPhim/CapNhatPhimUpload`,"POST",formdata,localStorage.getItem('accessToken'))
     },
     deleteMovieApi:(maphim)=>{
-        const url = `http://movieapi.cyberlearn.vn/api/QuanLyPhim/XoaPhim?MaPhim=${maphim}`;
-        
-        return axios({
-            url:url,
-            method:'DELETE',
-            headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')}
-        })
+        return callApi(`/QuanLyPhim/XoaPhim?MaPhim=${maphim}`,"DELETE",null,localStorage.getItem('accessToken'))
     }
 }
 

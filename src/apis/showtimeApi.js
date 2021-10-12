@@ -1,4 +1,5 @@
 import axios from "axios";
+import { TOKEN_CYBERSOFT } from "settings/apiConfig";
 import callApi from "../utils/callApi";
 
 
@@ -15,13 +16,14 @@ const showtimeApi = {
         return callApi(`QuanLyRap/LayThongTinCumRapTheoHeThong?maHeThongRap=${htRap}`)
     },
     postTaoShowTime(data){
-        const url = 'http://movieapi.cyberlearn.vn/api/QuanLyDatVe/TaoLichChieu';
+        const url = 'https://movienew.cybersoft.edu.vn/api/QuanLyDatVe/TaoLichChieu';
         
         return axios({
             url:url,
             method:'POST',
             data:data,
-            headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')}
+            headers: {'Authorization': 'Bearer '+ localStorage.getItem('accessToken')} ,
+            headers:{TokenCybersoft: TOKEN_CYBERSOFT}
         })
     }
 

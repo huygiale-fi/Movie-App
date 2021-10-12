@@ -113,6 +113,7 @@ export const deleteMovieAction = (maphim)=>async(dispatch)=>{
     try{
         dispatch({type:movieType.DELETE_MOVIE_REQUEST})
         const response = await movieApi.deleteMovieApi(maphim);
+        console.log(response);
         dispatch({
             type:movieType.DELETE_MOVIE_SUCCESS,
             payload: response.data.content,
